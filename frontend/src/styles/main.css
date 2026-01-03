@@ -1,0 +1,90 @@
+/* Custom input focus style for all forms */
+input:focus, textarea:focus, select:focus, .form-control:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px #4a00e033 !important;
+  border-color: #4a00e0 !important;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+@import './reset.css';
+@import './layout.css';
+@import './design-system.css';
+@import './theme.css';
+main {
+  min-height: 80vh;
+}
+
+
+/* Headings use theme text color */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+/* Book Card */
+.card {
+  border: none;
+  box-shadow: 0 2px 5px var(--card-shadow);
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.product-title {
+  height: 2.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+/* =========================================
+   MAIN CSS FILE (IMPORTS ALL OTHERS)
+   ========================================= */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Import Other CSS Files */
+@import './layout.css';
+@import './components.css';
+@import './pages.css';
+@import './CartPage.css'; /* Add this line */
+@import './ContactPage.css'; 
+@import './animations.css';
+/* Import Slick Carousel */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+/* Text Colors */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Spacing Utilities */
+.section-padding {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+/* Border Utilities */
+.border-theme {
+  border-color: var(--border-color) !important;
+}
+
+/* Shadow Utilities */
+.shadow-theme {
+  box-shadow: 0 10px 30px var(--shadow-color) !important;
+}

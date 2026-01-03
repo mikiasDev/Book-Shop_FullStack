@@ -1,0 +1,212 @@
+/* Tech Stack Section */
+.tech-stack-section {
+  margin: 3.5rem auto 0 auto;
+  max-width: 980px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+}
+
+.tech-stack-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.tech-stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.tech-stack-item {
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.tech-stack-item:hover {
+  box-shadow: 0 8px 24px var(--shadow-md, rgba(74,0,224,0.12));
+  transform: translateY(-6px) scale(1.03);
+}
+.tech-stack-icon {
+  font-size: 2.5rem;
+  color: var(--primary, #4a00e0);
+  margin-bottom: 0.7rem;
+}
+.tech-stack-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--primary, #4a00e0);
+  margin-bottom: 0.3rem;
+}
+.tech-stack-desc {
+  color: var(--text-main, #0f172a);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .tech-stack-section {
+    padding: 1.5rem 0.7rem;
+  }
+  .tech-stack-list {
+    gap: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .tech-stack-list {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .tech-stack-item {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+/* AboutPage.css - Modern, prompt-compliant styles for About page */
+
+
+.about-hero {
+  background: linear-gradient(135deg, var(--primary, #4a00e0) 0%, var(--secondary, #8e54e9) 100%);
+  color: #fff;
+  padding: 80px 0 56px 0;
+  border-radius: 0 0 48px 48px;
+  box-shadow: 0 8px 32px var(--shadow-lg, rgba(74,0,224,0.16));
+  text-align: center;
+  min-height: 320px;
+}
+
+.about-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1.5px;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.about-hero p {
+  font-size: 1.25rem;
+  opacity: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text-main, #f8fafc);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.about-section {
+  background: var(--card-bg, #fff);
+  border-radius: 22px;
+  box-shadow: 0 6px 32px var(--shadow-md, rgba(74,0,224,0.10));
+  padding: 3rem 2.5rem;
+  margin: 2.5rem auto;
+  max-width: 980px;
+  border: 1.5px solid var(--border-color, #e5e7eb);
+}
+
+.about-section h2 {
+  color: var(--primary, #4a00e0);
+  font-size: 2.2rem;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  margin-bottom: 1.2rem;
+  font-weight: 800;
+}
+
+.about-section p {
+  color: var(--text-main, #0f172a);
+  font-size: 1.18rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.team-section {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: var(--primary, #4a00e0);
+  margin-bottom: 2rem;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-weight: 800;
+}
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.team-member {
+  background: var(--card-bg, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px var(--shadow-sm, rgba(74,0,224,0.08));
+  padding: 2rem 1.2rem;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.5px solid var(--border-color, #e5e7eb);
+}
+
+.team-member:hover {
+  box-shadow: 0 8px 32px var(--shadow-md, rgba(74,0,224,0.14));
+  transform: translateY(-8px) scale(1.03);
+}
+
+.team-member img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.9rem;
+  border: 2.5px solid var(--secondary, #8e54e9);
+  background: #fff;
+}
+
+.team-member .member-name {
+  font-weight: 800;
+  color: var(--primary, #4a00e0);
+  margin-bottom: 0.3rem;
+  font-size: 1.15rem;
+}
+
+.team-member .member-role {
+  font-size: 1.05rem;
+  color: var(--secondary, #8e54e9);
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  .team-list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  .about-section {
+    padding: 1.2rem 0.7rem;
+  }
+  .team-list {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .team-member {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}

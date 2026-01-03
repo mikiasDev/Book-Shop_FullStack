@@ -1,0 +1,28 @@
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  gap: 2px;
+}
+.rating .star {
+  cursor: pointer;
+  transition: transform 0.15s, color 0.15s;
+  color: var(--book-rating-color, #ffd700);
+}
+.rating .star.interactive:hover,
+.rating .star.interactive:focus {
+  color: #ffb300;
+  transform: scale(1.2);
+}
+.rating .star.selected {
+  color: #ff9800;
+}
+.rating .star.filled {
+  color: var(--book-rating-color, #ffd700);
+}
+.rating .star.half {
+  color: var(--book-rating-color, #ffd700);
+}
+.rating .star.empty {
+  color: #e0e0e0;
+}

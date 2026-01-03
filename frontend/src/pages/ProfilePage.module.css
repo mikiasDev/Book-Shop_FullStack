@@ -1,0 +1,41 @@
+.profile-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 2rem;
+}
+.profile-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #888;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.profile-tab.active {
+  color: #4a00e0;
+  border-bottom: 3px solid #4a00e0;
+  background: #f5f5fa;
+}
+@media (max-width: 600px) {
+  .profile-tabs {
+    flex-direction: column;
+    gap: 0;
+    border-bottom: none;
+    border-right: 2px solid #eee;
+    margin-bottom: 1.5rem;
+  }
+  .profile-tab {
+    border-bottom: none;
+    border-right: 3px solid transparent;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+  }
+  .profile-tab.active {
+    border-right: 3px solid #4a00e0;
+    background: #f5f5fa;
+  }
+}

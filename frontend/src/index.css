@@ -1,0 +1,462 @@
+/* =========================================
+   MICRO-INTERACTIONS FOR BUTTONS & FORMS
+   ========================================= */
+button, .btn, input[type="submit"], input[type="button"], .form-control, .form-select {
+  transition: box-shadow 0.18s, background 0.18s, color 0.18s, transform 0.13s;
+}
+button:not(:disabled):hover, .btn:not(:disabled):hover, input[type="submit"]:hover, input[type="button"]:hover {
+  transform: translateY(-2px) scale(1.035);
+  box-shadow: 0 4px 18px rgba(124,79,44,0.10), 0 1.5px 6px rgba(62,98,87,0.08);
+  background: var(--color-primary, #7c4f2c);
+  color: var(--color-textInverted, #fff);
+}
+button:not(:disabled):active, .btn:not(:disabled):active, input[type="submit"]:active, input[type="button"]:active {
+  transform: scale(0.97);
+  box-shadow: 0 1.5px 6px rgba(62,98,87,0.10);
+  background: var(--color-secondary, #3e6257);
+  color: var(--color-accent, #e6b800);
+}
+button:focus, .btn:focus, input[type="submit"]:focus, input[type="button"]:focus, .form-control:focus, .form-select:focus {
+  outline: 2px solid var(--color-accent, #e6b800);
+  box-shadow: 0 0 0 3px rgba(230,184,0,0.18);
+  z-index: 2;
+}
+.form-control, .form-select {
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+}
+.form-control:hover, .form-select:hover {
+  border-color: var(--color-primary, #7c4f2c);
+  background: var(--color-surface, #f1e9db);
+}
+.form-control:active, .form-select:active {
+  border-color: var(--color-secondary, #3e6257);
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--color-accent, #e6b800);
+  background: #fffbe6;
+}
+/* =========================================
+   1. FONTS & ROOT VARIABLES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Merriweather:wght@700;900&family=Lora:wght@400;500;700&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+:root {
+  /* Brand Colors */
+  --primary-gradient: linear-gradient(135deg, #7c4f2c 0%, #3e6257 100%);
+  --primary-color: #7c4f2c;
+  --secondary-color: #3e6257;
+  --accent-color: #e6b800;
+  
+  /* Typography */
+  --font-family-ui: 'Poppins', Arial, sans-serif;
+  --font-family-heading: 'Merriweather', serif;
+  --font-family-body: 'Lora', serif;
+  --font-size-base: 16px;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 2rem;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.25rem;
+  --font-size-h5: 1.1rem;
+  --font-size-h6: 1rem;
+  --font-weight-base: 400;
+  --font-weight-heading: 700;
+  --font-weight-bold: 600;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.2;
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-round: 9999px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --border-radius-lg: 20px;
+  /* Footer Theme Variables (default: dark) */
+  --footer-bg: #181828;
+  --footer-text: #f8f9fa;
+  --footer-link: #f8f9fa;
+  --footer-icon: #ffb347;
+}
+
+/* Light Theme Footer Overrides */
+[data-bs-theme="light"] {
+  --footer-bg: #f8f9fa;
+  --footer-text: #181828;
+  --footer-link: #181828;
+  --footer-icon: #4a00e0;
+}
+
+/* Dark Theme Footer Overrides */
+[data-bs-theme="dark"] {
+  --footer-bg: #181828;
+  --footer-text: #f8f9fa;
+  --footer-link: #f8f9fa;
+  --footer-icon: #ffb347;
+}
+
+/* =========================================
+   2. GLOBAL RESET & BASE STYLES
+   ========================================= */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Headings */
+h1, .h1 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: 0.7em;
+}
+h2, .h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: 0.65em;
+}
+h3, .h3 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: 0.6em;
+}
+h4, .h4 {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: 0.55em;
+}
+h5, .h5 {
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+}
+h6, .h6 {
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  margin-bottom: 0.45em;
+}
+
+/* UI & nav elements */
+button, .btn, .nav, .navbar, .form-label, .form-control, .form-select, .pagination, .breadcrumb, .dropdown-menu, .dropdown-item {
+  font-family: var(--font-family-ui);
+}
+
+/* Body text, paragraphs, lists */
+p, li, ul, ol, blockquote, .card, .modal, .alert, .table, .form-text {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+}
+
+/* Theme variables for light and dark mode */
+:root {
+  --book-img-bg: #f8f9fa;
+  --book-bg: #fff;
+  --book-price: #0d6efd;
+  --book-rating-bg: rgba(30,30,30,0.85);
+  --book-rating-color: #ffd700;
+  --book-rating-shadow: rgba(0,0,0,0.10);
+  --book-rating-border: rgba(255,255,255,0.12);
+  --book-secondary-bg: linear-gradient(0deg, rgba(30,30,30,0.70) 70%, rgba(30,30,30,0.0) 100%);
+  --book-secondary-color: #fff;
+  --book-tag-bg: rgba(0,0,0,0.18);
+  --book-tag-color: #fff;
+  --book-stock-bg: rgba(40,167,69,0.12);
+  --book-stock-color: #28a745;
+  --book-stock-border: rgba(0,0,0,0.04);
+  --book-stock-bg-out: rgba(220,53,69,0.12);
+  --book-stock-color-out: #dc3545;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --book-img-bg: #23272b;
+    --book-bg: #181a1b;
+    --book-price: #4ea1ff;
+    --book-rating-bg: rgba(255,255,255,0.13);
+    --book-rating-color: #ffe066;
+    --book-rating-shadow: rgba(0,0,0,0.22);
+    --book-rating-border: rgba(0,0,0,0.18);
+    --book-secondary-bg: linear-gradient(0deg, rgba(0,0,0,0.82) 70%, rgba(0,0,0,0.0) 100%);
+    --book-secondary-color: #fff;
+    --book-tag-bg: rgba(255,255,255,0.13);
+    --book-tag-color: #fff;
+    --book-stock-bg: rgba(40,167,69,0.18);
+    --book-stock-color: #6be585;
+    --book-stock-border: rgba(255,255,255,0.08);
+    --book-stock-bg-out: rgba(220,53,69,0.18);
+    --book-stock-color-out: #ff7b7b;
+  }
+}
+
+main {
+  flex: 1 0 auto;
+  padding-top: 100px !important; /* Header Clearance */
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 120px !important;
+  }
+}
+
+/* =========================================
+   3. DARK MODE OVERRIDES (CRITICAL FIXES)
+   ========================================= */
+
+
+/* All dark mode overrides now use theme variables from themes.css */
+
+/* Inputs & Dropdowns */
+
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select {
+  background-color: var(--input-bg, #2c2c2c);
+  border-color: var(--input-border, #444);
+  color: var(--color-text, #fff);
+}
+
+[data-bs-theme="dark"] .form-control:focus,
+[data-bs-theme="dark"] .form-select:focus {
+  border-color: var(--input-focus, #6a2ce0) !important;
+  box-shadow: 0 0 0 2px rgba(106,44,224,0.2) !important;
+  outline: none !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+  background-color: var(--color-surface, #23232a) !important;
+  border-color: var(--color-border, #444) !important;
+  color: var(--color-text, #fff) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+}
+[data-bs-theme="dark"] .dropdown-item {
+  color: #fff !important;
+  background: transparent !important;
+}
+[data-bs-theme="dark"] .dropdown-item:hover, [data-bs-theme="dark"] .dropdown-item:focus {
+  background-color: var(--state-hover-bg, #444) !important;
+  color: var(--state-hover-text, #fff) !important;
+}
+
+/* =========================================
+   4. COMPONENT STYLES
+   ========================================= */
+
+/* --- Navbar & Branding --- */
+.glass-navbar {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  z-index: 1030 !important;
+  position: fixed !important;
+  width: 100%;
+}
+
+.brand-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* --- Hero Section --- */
+.hero-gradient {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #ffffff !important; /* Always white text on hero */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Product Cards --- */
+.book-card {
+  border: none !important;
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: var(--transition);
+  overflow: hidden;
+  height: 100%; /* Ensure equal height */
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(74, 0, 224, 0.3);
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 0, 224, 0.4);
+}
+
+/* --- Section Titles --- */
+.section-title-modern {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.section-title-modern::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* --- Testimonials --- */
+.testimonial-slide {
+  padding: 15px;
+}
+.testimonial-card-modern {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0d6efd;
+  margin: 0 auto 15px auto;
+  padding: 2px;
+  background: white;
+}
+
+/* --- Animations --- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes rotateSun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateMoon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.fa-sun { animation: rotateSun 10s linear infinite; }
+.fa-moon { animation: rotateMoon 15s linear infinite; }
+
+/* --- Footer --- */
+footer.footer-custom {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  font-weight: 500;
+  margin-top: auto;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 -2px 24px rgba(76,0,224,0.08);
+}
+
+}
+
+.footer-list {
+  padding-left: 0;
+}
+.footer-link {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 600;
+  opacity: 1;
+}
+.footer-link:hover {
+  color: var(--footer-link);
+  text-decoration: underline;
+  opacity: 1;
+}
+}
+.brand-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+.footer-input {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border-radius: 50px;
+  border: 1px solid var(--primary-color);
+}
+.app-badge {
+  color: var(--footer-icon);
+  opacity: 1;
+}
+/* --- Fix Book Card Images --- */
+.book-card .card-img-top {
+  width: 100%;
+  height: 250px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  object-position: center top; /* Focus on the top/center of the book cover */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+/* Utility Classes */
+.cursor-pointer { cursor: pointer; }
+.hover-primary:hover { color: var(--primary-color) !important; }

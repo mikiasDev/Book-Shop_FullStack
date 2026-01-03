@@ -1,0 +1,119 @@
+import React, { useState } from 'react';
+import { Container, Row, Col, Tab, Nav, Card } from 'react-bootstrap';
+import { FaUser, FaList, FaCreditCard, FaSignOutAlt, FaTachometerAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../redux/slices/authSlice';
+import { resetCart } from '../redux/slices/cartSlice';
+import { useLogoutMutation } from '../redux/slices/userApiSlice';
+
+// Components
+import Profile from '../components/profile/Profile';
+import OrderHistory from '../components/profile/OrderHistory';
+import ProfileDashboard from '../components/profile/ProfileDashboard';
+import UserAddresses from '../components/profile/UserAddresses';
+import PaymentMethods from '../components/profile/PaymentMethods';
+
+const ProfilePage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [logoutApiCall] = useLogoutMutation();
+  const [activeTab, setActiveTab] = useState('dashboard');
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      dispatch(resetCart());
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <Container className="py-5">
+      <Row>
+        <Col md={12} className="mb-4">
+          <h2 className="fw-bold text-primary">My Account</h2>
+          <p className="text-muted">Manage your profile, orders, and settings.</p>
+        </Col>
+      </Row>
+      
+      <Tab.Container activeKey={activeTab} onSelect={(k) => setActiveTab(k)}>
+        <Row>
+          <Col md={3} className="mb-4">
+            <Card className="border-0 shadow-sm rounded-3">
+              <Card.Body className="p-0">
+                <Nav variant="pills" className="flex-column profile-nav">
+                  <Nav.Item>
+                    <Nav.Link eventKey="dashboard" className="py-3 px-4 d-flex align-items-center">
+                      <FaTachometerAlt className="me-3" /> Dashboard
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="orders" className="py-3 px-4 d-flex align-items-center">
+                      <FaList className="me-3" /> My Orders
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="addresses" className="py-3 px-4 d-flex align-items-center">
+                      <FaMapMarkerAlt className="me-3" /> Addresses
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="payment" className="py-3 px-4 d-flex align-items-center">
+                      <FaCreditCard className="me-3" /> Payment Methods
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="profile" className="py-3 px-4 d-flex align-items-center">
+                      <FaUser className="me-3" /> Account Details
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="mt-3 border-top">
+                    <Nav.Link onClick={logoutHandler} className="py-3 px-4 d-flex align-items-center text-danger">
+                      <FaSignOutAlt className="me-3" /> Sign Out
+                    </Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card.Body>
+            </Card>
+          </Col>
+          
+          <Col md={9}>
+            <Tab.Content>
+              <Tab.Pane eventKey="dashboard">
+                <Card className="border-0 shadow-sm rounded-3 p-4">
+                  <ProfileDashboard setActiveTab={setActiveTab} />
+                </Card>
+              </Tab.Pane>
+              <Tab.Pane eventKey="orders">
+                <Card className="border-0 shadow-sm rounded-3 p-4">
+                  <OrderHistory />
+                </Card>
+              </Tab.Pane>
+              <Tab.Pane eventKey="addresses">
+                <Card className="border-0 shadow-sm rounded-3 p-4">
+                  <UserAddresses />
+                </Card>
+              </Tab.Pane>
+              <Tab.Pane eventKey="payment">
+                <Card className="border-0 shadow-sm rounded-3 p-4">
+                  <PaymentMethods />
+                </Card>
+              </Tab.Pane>
+              <Tab.Pane eventKey="profile">
+                <Card className="border-0 shadow-sm rounded-3 p-4">
+                  <Profile />
+                </Card>
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
+    </Container>
+  );
+};
+
+export default ProfilePage;

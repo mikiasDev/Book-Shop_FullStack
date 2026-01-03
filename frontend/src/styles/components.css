@@ -1,0 +1,437 @@
+/* Register Form: Dark Theme Fixes */
+[data-theme="dark"] .register-form-container {
+  background: var(--card-bg, #18181b);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 var(--shadow-md, rgba(44,62,80,0.18));
+}
+[data-theme="dark"] .register-form-container label,
+[data-theme="dark"] .register-form-container .form-label {
+  color: #e0e0e0;
+}
+[data-theme="dark"] .register-form-container input,
+[data-theme="dark"] .register-form-container .form-control {
+  background: #23232b;
+  color: #f3f3f3;
+  border: 1.5px solid #444;
+  box-shadow: none;
+}
+[data-theme="dark"] .register-form-container input::placeholder,
+[data-theme="dark"] .register-form-container .form-control::placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+[data-theme="dark"] .register-form-container input:focus,
+[data-theme="dark"] .register-form-container .form-control:focus {
+  background: #23232b;
+  color: #fff;
+  border-color: #6a2ce0;
+  box-shadow: 0 0 0 2px #6a2ce055;
+}
+[data-theme="dark"] .register-form-container .btn-primary {
+  background: #6a2ce0;
+  color: #fff;
+  border: none;
+}
+[data-theme="dark"] .register-form-container .btn-primary:active,
+[data-theme="dark"] .register-form-container .btn-primary:focus {
+  background: #4a00e0;
+  color: #fff;
+}
+/* Unified State Styles */
+
+
+
+
+/* Hover State: Only per-component, never global or container. */
+.btn-primary:hover {
+  box-shadow: 0 6px 24px 0 rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit;
+  transition: box-shadow 0.18s cubic-bezier(0.4,0,0.2,1), opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+.book-card:hover {
+  box-shadow: 0 6px 24px 0 rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit;
+  transition: box-shadow 0.18s cubic-bezier(0.4,0,0.2,1), opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+.nav-link:hover {
+  box-shadow: 0 6px 24px 0 rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit !important;
+  transition: box-shadow 0.18s cubic-bezier(0.4,0,0.2,1), opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+.icon-btn:hover {
+  box-shadow: 0 6px 24px 0 rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit;
+  transition: box-shadow 0.18s cubic-bezier(0.4,0,0.2,1), opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+
+
+
+/* Focus State: Minimal indicator, no border-like visuals, not shown on hover */
+.btn-primary:focus-visible,
+.book-card:focus-within,
+.nav-link:focus-visible,
+.icon-btn:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 0 0 2px rgba(255,190,0,0.18);
+  background: inherit;
+  color: inherit;
+}
+
+
+/* Active State: No border/outline/stroke on active */
+.btn-primary:active,
+.book-card:active,
+.nav-link:active,
+.icon-btn:active {
+  background: var(--accent, #ffb300);
+  color: var(--white, #fff);
+  box-shadow: var(--shadow-md, 0 4px 8px 0 rgba(16,30,54,0.08));
+  outline: none !important;
+  border: none !important;
+}
+
+/* Disabled State */
+/* Disabled State */
+.btn-primary:disabled,
+.book-card:disabled,
+.icon-btn:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--color-surface, #fff);
+  color: var(--text-muted, #94a3b8);
+  opacity: 0.6;
+  cursor: not-allowed;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+  background: var(--primary-gradient, linear-gradient(90deg, #a385ff, #ffb74d));
+   REUSABLE COMPONENTS
+   ========================================= */
+
+/* 1. Glass Header */
+.glass-navbar {
+  background-color: rgba(var(--card-bg-rgb), 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md, 0 4px 8px 0 rgba(16,30,54,0.08));
+  position: fixed;
+  top: 0;
+  color: var(--color-text, #fff) !important;
+  z-index: 1030;
+}
+
+/* Brand Logo */
+.brand-logo {
+  font-weight: var(--font-weight-extrabold, 700);
+  background: var(--primary-gradient, linear-gradient(90deg, #4a00e0, #8e2de2));
+  -webkit-background-clip: text;
+  color: var(--color-text, #fff);
+  background-clip: text;
+  font-size: var(--font-size-3xl, 2rem);
+  letter-spacing: 0.03em;
+  outline: none;
+}
+
+/* Navigation */
+
+.nav-link {
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--text-main, #181818) !important;
+  background: none;
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem) !important;
+  border-radius: var(--radius-sm, 4px);
+  transition: var(--transition, 150ms cubic-bezier(0.4,0,0.2,1));
+  outline: none;
+}
+
+.nav-link:hover, .nav-link:focus-visible {
+  box-shadow: 0 6px 24px 0 rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit !important;
+}
+
+/* Theme Toggle Button */
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--primary, #4a00e0);
+  font-size: var(--font-size-lg, 1.5rem);
+  cursor: pointer;
+  padding: var(--space-2, 0.5rem);
+  border-radius: var(--radius-full, 999px);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-normal, 250ms cubic-bezier(0.4,0,0.2,1)), color var(--transition-normal, 250ms cubic-bezier(0.4,0,0.2,1)), transform var(--transition-fast, 150ms cubic-bezier(0.4,0,0.2,1));
+  outline: none;
+}
+
+.theme-toggle:focus-visible {
+  box-shadow: 0 0 0 2px var(--primary, #4a00e0);
+}
+
+.theme-toggle:hover,
+.theme-toggle--active {
+  box-shadow: 0 4px 16px 0 rgba(74,0,224,0.10);
+  opacity: 0.92;
+  transform: translateY(-2px) scale(1.04);
+  background: inherit;
+  color: inherit;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: var(--accent, #ffb300);
+}
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .theme-toggle--active {
+  box-shadow: 0 4px 16px 0 rgba(74,0,224,0.10);
+  opacity: 0.92;
+  transform: translateY(-2px) scale(1.04);
+  background: inherit;
+  color: inherit;
+}
+
+/* 2. Product Cards */
+.book-card {
+  background: var(--card-bg, #fff);
+  border-radius: var(--radius-lg, 16px) !important;
+  box-shadow: var(--shadow-md, 0 4px 8px 0 rgba(16,30,54,0.08));
+  transition: var(--transition, 150ms cubic-bezier(0.4,0,0.2,1));
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: var(--space-6, 2rem);
+  padding: var(--space-4, 1rem) var(--space-4, 1rem) var(--space-5, 1.5rem) var(--space-4, 1rem);
+}
+
+
+/* Global hover/focus for book cards: disables borders, outlines, box strokes, divider lines */
+.book-card:hover, .book-card:focus-within {
+  /* Only enhance depth/motion, not structure */
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 8px 32px rgba(74,0,224,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  opacity: 0.97;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Prevent any divider lines or edges on hover for book-card and its children */
+.book-card:hover *, .book-card:focus-within * {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Book Image */
+.book-image-container {
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  height: 250px;
+  position: relative;
+}
+
+.book-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-image {
+  transform: scale(1.08);
+}
+
+/* 3. Buttons */
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text, #fff);
+  box-shadow: 0 4px 15px rgba(74, 0, 224, 0.3);
+  transition: var(--transition);
+  outline: none;
+
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px #4a00e0;
+  opacity: 0.96;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit;
+}
+
+/* 4. Footer */
+.site-footer {
+  background-color: var(--card-bg, #181818);
+  color: var(--text-main, #fff);
+  padding: 60px 0 30px;
+  margin-top: auto;
+}
+
+  color: var(--color-primary, #a385ff) !important;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: var(--transition);
+
+
+.footer-link:hover, .footer-link:focus-visible {
+  opacity: 0.92;
+  padding-left: 5px;
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit !important;
+}
+
+  color: inherit;
+  font-size: 1.3rem;
+  margin-right: 15px;
+  transition: var(--transition);
+
+
+.social-icon:hover, .social-icon:focus-visible {
+  opacity: 0.92;
+  transform: translateY(-3px) scale(1.1);
+  outline: none !important;
+  border: none !important;
+  background: inherit;
+  color: inherit;
+}
+
+/* 5. Form Controls */
+.form-control {
+  background-color: var(--card-bg, #fff);
+  border: 1.5px solid var(--border-color, #222);
+  color: var(--text-main, #181818);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  background-color: var(--card-bg, #fff);
+  border-color: var(--primary-color, #4a00e0);
+  color: var(--text-main, #181818);
+  box-shadow: 0 0 0 0.25rem #ffb300;
+  outline: 2px solid #ffb300;
+}
+
+
+/* Draggable Panel Styles */
+.draggable-panel {
+  background: var(--card-bg, #fff);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  min-width: 280px;
+  max-width: 480px;
+  transition: box-shadow 0.2s;
+}
+
+.draggable-panel:active {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Admin Panel Sidebar Colors & Text Structure */
+/* Sidebar: high-contrast for dark mode */
+.admin-sidebar-nav {
+  background: var(--color-surface, #18181b);
+  color: var(--color-text, #fff);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+/* Sidebar nav-link: clear state separation, no borders */
+.admin-sidebar-nav .nav-link {
+  color: var(--color-text, #fff) !important;
+  background: none;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  padding: 0.75rem 1.25rem !important;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  opacity: 0.85;
+}
+/* Sidebar nav-link active/hover: strong color, no border */
+  background: var(--color-primary, #a385ff);
+  color: var(--color-surface, #18181b) !important;
+  font-weight: 600;
+  opacity: 1;
+
+.admin-sidebar-nav .nav-link .me-2 {
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.admin-sidebar-nav .fw-medium {
+  font-weight: 600;
+  font-size: 1.12rem;
+}
+.admin-sidebar-nav .border-bottom {
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+}
+/* Sidebar muted text: still readable in dark mode */
+  color: var(--color-text, #bdbdbd) !important;
+  font-size: 0.92rem;
+  font-weight: 400;
+
+/* Sidebar primary text: high-contrast accent */
+.admin-sidebar-nav .text-primary {
+  color: var(--color-primary, #a385ff) !important;
+}
+/* Sidebar secondary text: high-contrast accent */
+.admin-sidebar-nav .text-secondary {
+  color: var(--color-secondary, #ffb74d) !important;
+}
+/* Sidebar success text: high-contrast accent */
+  color: var(--color-success, #4fffb0) !important;
+
+/* Sidebar warning text: high-contrast accent */
+  color: var(--color-warning, #ffe066) !important;
+
+/* Sidebar info text: high-contrast accent */
+  color: var(--color-info, #7fdfff) !important;
+
+/* Sidebar danger text: high-contrast accent */
+  color: var(--color-danger, #ff6b6b) !important;
+
+.admin-sidebar-nav .nav-item {
+  margin-bottom: 2px;
+}
+.admin-sidebar-nav .fw-bold {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+/* Sidebar bg-light: subtle surface for dark mode */
+.admin-sidebar-nav .bg-light {
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--color-text, #fff) !important;
+}

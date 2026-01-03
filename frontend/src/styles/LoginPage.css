@@ -1,0 +1,235 @@
+/* =========================================
+   LOGIN PAGE STYLES
+   ========================================= */
+
+.login-page-container {
+  min-height: calc(100vh - 200px);
+  padding-top: 80px;
+}
+
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+/* Login brand section */
+.login-brand-section {
+  animation: slideInLeft 0.6s ease;
+}
+
+/* Login form card */
+.login-form-card {
+  border-radius: 25px !important;
+  animation: slideInRight 0.6s ease;
+}
+
+.login-icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Form styling */
+.login-form-card .form-control,
+.login-form-card .input-group-text {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.login-form-card .input-group-text {
+  border-right: none;
+}
+
+.login-form-card .form-control:focus {
+  background-color: var(--card-bg);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.15);
+}
+
+.login-form-card .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.login-form-card .form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* Social login buttons */
+.social-login-btn {
+  border-radius: 10px !important;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Divider */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* Submit button */
+.login-form-card .btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.login-form-card .btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.login-form-card .btn-primary:disabled {
+  opacity: 0.7;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Demo accounts */
+.demo-accounts-section .btn {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.demo-accounts-section .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Forgot password link */
+.btn-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .login-page-container {
+    padding-top: 100px;
+  }
+  
+  .login-brand-section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .login-form-card {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page-container {
+    padding-top: 90px;
+  }
+  
+  .login-form-card {
+    border-radius: 20px !important;
+    padding: 1.5rem !important;
+  }
+  
+  .social-login-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .divider span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-page-container {
+    padding: 80px 15px 30px;
+  }
+  
+  .login-form-card {
+    border-radius: 15px !important;
+    padding: 1rem !important;
+  }
+  
+  .social-login-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .social-login-btn {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.login-form-card .form-group {
+  animation: fadeIn 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.login-form-card .form-group:nth-child(1) { animation-delay: 0.1s; }
+.login-form-card .form-group:nth-child(2) { animation-delay: 0.2s; }
+.login-form-card .form-group:nth-child(3) { animation-delay: 0.3s; }
+.login-form-card .form-group:nth-child(4) { animation-delay: 0.4s; }

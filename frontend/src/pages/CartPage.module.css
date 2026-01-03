@@ -1,0 +1,54 @@
+/* CartPage.module.css - Theme fixes for cart page */
+
+.cart-main-bg {
+  background: var(--color-background, #f8fafc) !important;
+  color: var(--color-text, #212529) !important;
+  padding-top: 100px !important; /* Ensure content is not hidden behind fixed header */
+}
+
+.cart-header {
+  color: var(--color-text, #212529) !important;
+}
+
+.cart-link {
+  color: var(--primary-color, #4a00e0) !important;
+}
+
+.cart-card {
+  background: var(--card-bg, #fff) !important;
+  color: var(--color-text, #212529) !important;
+  border-radius: var(--border-radius-lg, 20px);
+  box-shadow: var(--shadow-md, 0 0.5rem 1rem rgba(0,0,0,0.15));
+}
+
+.cart-list-item {
+  background: var(--card-bg, #fff) !important;
+  color: var(--color-text, #212529) !important;
+  border-color: var(--card-border, #dee2e6) !important;
+}
+
+.cart-input-bg {
+  background: var(--input-bg, #fff) !important;
+  color: var(--color-text, #212529) !important;
+  border-color: var(--input-border, #ced4da) !important;
+}
+.cart-input-bg:focus, .cart-input-bg:focus-visible, .cart-input-bg:focus-within {
+  outline: none !important;
+  border-color: var(--input-focus, #4a00e0) !important;
+  box-shadow: 0 0 0 2px rgba(106,44,224,0.2) !important;
+}
+
+.cart-btn-gradient {
+  background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%) !important;
+  color: #fff !important;
+}
+
+.cart-summary {
+  background: var(--card-bg, #fff) !important;
+  color: var(--color-text, #212529) !important;
+}
+
+.cart-empty-bg {
+  background: var(--card-bg, #fff) !important;
+  color: var(--color-text, #212529) !important;
+}

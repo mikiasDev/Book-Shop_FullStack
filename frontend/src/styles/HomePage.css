@@ -1,0 +1,138 @@
+/* Theme-driven buttons for hero/discovery section */
+.home-btn-primary {
+  background: var(--accent-color);
+  color: var(--footer-bg);
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.home-btn-primary:hover, .home-btn-primary:focus {
+  background: var(--primary-color);
+  color: #fff;
+}
+.home-btn-secondary {
+  background: var(--footer-bg);
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.home-btn-secondary:hover, .home-btn-secondary:focus {
+  background: var(--accent-color);
+  color: var(--footer-bg);
+  border-color: var(--primary-color);
+}
+/* HomePage.css - Modern, professional styles */
+
+
+.home-hero-gradient {
+  min-height: 80vh;
+  padding-top: 80px;
+  background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 48px 48px;
+  box-shadow: 0 8px 32px rgba(76,0,224,0.08);
+}
+
+.hero-floating-books {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.book {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  background: #fff;
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+  opacity: 0.85;
+  animation: floatBook 6s ease-in-out infinite;
+}
+.book1 { left: 10%; top: 18%; background: #f7cac9; animation-delay: 0s; }
+.book2 { left: 80%; top: 22%; background: #92a8d1; animation-delay: 1.5s; }
+.book3 { left: 25%; top: 60%; background: #b5ead7; animation-delay: 3s; }
+.book4 { left: 70%; top: 70%; background: #ffdac1; animation-delay: 4.5s; }
+
+@keyframes floatBook {
+  0% { transform: translateY(0) rotate(-6deg) scale(1); }
+  50% { transform: translateY(-40px) rotate(6deg) scale(1.08); }
+  100% { transform: translateY(0) rotate(-6deg) scale(1); }
+}
+
+.home-hero h1 {
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  color: var(--text-main);
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.12);
+  margin-left: 12px;
+}
+
+
+.home-hero p {
+  opacity: 0.92;
+  color: var(--text-main);
+  margin-top: 16px;
+  margin-right: 12px;
+}
+
+
+.home-feature {
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.home-feature:hover {
+  transform: translateY(-6px);
+}
+
+.slick-slider {
+  margin-bottom: 2.5rem;
+}
+
+.testimonial-card {
+  background: var(--card-bg, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px var(--shadow-sm);
+  padding: 1.5rem 1.2rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial-card img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 0.7rem;
+  border: 2px solid var(--secondary-color);
+}
+
+.testimonial-card .testimonial-name {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-card .testimonial-role {
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .home-hero h1 {
+    font-size: 2rem;
+  }
+  .home-feature {
+    padding: 1.2rem 0.7rem;
+  }
+}

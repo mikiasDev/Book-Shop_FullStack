@@ -1,0 +1,153 @@
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+
+// Fixed paths: Assuming Message/Loader are in src/components/common/
+import Message from '../common/Message'; 
+import Loader from '../common/Loader';   
+
+// Fixed path: Go up two levels to src/redux
+import { setCredentials } from '../../redux/slices/authSlice'; 
+
+const Profile = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  
+  // Fixed: Access state.auth
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      setName(userInfo.name);
+      setEmail(userInfo.email);
+    }
+  }, [userInfo]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match');
+    } else {
+      setLoading(true);
+      try {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
+        const { data } = await axios.put(
+          '/api/users/profile',
+          { id: userInfo._id, name, email, password },
+          config
+        );
+        setSuccess(true);
+        setMessage(null);
+        
+        // Update Redux state
+        dispatch(setCredentials(data));
+        
+        setLoading(false);
+      } catch (error) {
+        setMessage(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+        );
+        setLoading(false);
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="d-flex align-items-center mb-4">
+        <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: '64px', height: '64px', fontSize: '24px' }}>
+          {userInfo?.name?.charAt(0).toUpperCase()}
+        </div>
+        <div>
+          <h3 className="mb-0">Profile Settings</h3>
+          <p className="text-muted mb-0">Update your personal information</p>
+        </div>
+      </div>
+
+      {message && <Message variant='danger'>{message}</Message>}
+      {success && <Message variant='success'>Profile Updated Successfully</Message>}
+      {loading && <Loader />}
+      <Form onSubmit={submitHandler}>
+        <Row>
+          <Col md={6}>
+            <Form.Group controlId='name' className='mb-3'>
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="rounded-pill"
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId='email' className='mb-3'>
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type='email'
+                placeholder='Enter email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="rounded-pill"
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+
+        <hr className="my-4" />
+        <h5 className="mb-3 text-muted">Change Password</h5>
+
+        <Row>
+          <Col md={6}>
+            <Form.Group controlId='password' className='mb-3'>
+              <Form.Label>New Password</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Enter new password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="rounded-pill"
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+          <Col md={6}>
+            <Form.Group controlId='confirmPassword' className='mb-3'>
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Confirm new password'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="rounded-pill"
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        </Row>
+
+        <div className="d-flex justify-content-end mt-4">
+          <Button type='submit' variant='primary' className="rounded-pill px-4">
+            Update Profile
+          </Button>
+        </div>
+      </Form>
+    </>
+  );
+};
+
+export default Profile;

@@ -1,0 +1,64 @@
+/* frontend/src/styles/themes.css */
+
+[data-theme="dark"] .text-dark {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .border {
+  /* themes.css - Theme variables for light and dark mode (safe defaults, no text or background override) */
+  :root {
+    --primary-color: #4a00e0;
+    --secondary-color: #8e2de2;
+    --accent-color: #ff5e14;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --border-color: #dee2e6;
+    --card-bg: #ffffff;
+    --card-border: #dee2e6;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --input-focus: #4a00e0;
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --border-radius-lg: 20px;
+    --border-radius-md: 12px;
+    --border-radius-sm: 8px;
+    --font-family: 'Poppins', sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5;
+    /* No text color variables to ensure theme never affects text */
+  }
+   [data-theme="dark"] {
+    --primary-color: #6a2ce0;
+    --secondary-color: #9a4de6;
+    --accent-color: #ff7043;
+    --border-color: #444444;
+    --card-bg: #1e1e1e;
+    --card-border: #333333;
+    --input-bg: #2d2d2d;
+    --input-border: #444444;
+    --input-focus: #6a2ce0;
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+    --color-textSecondary: #e0dfff;
+    --color-textMuted: #bdbdbd;
+    /* Increased brightness and font weight for legibility */
+  [data-theme="dark"] .text-secondary {
+    color: var(--color-textSecondary, #e0dfff) !important;
+    font-weight: 500;
+  }
+  [data-theme="dark"] .text-muted {
+    color: var(--color-textMuted, #bdbdbd) !important;
+    font-weight: 500;
+  }
+  }
+  /* No text or background color variables here to avoid affecting content */
